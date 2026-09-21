@@ -1,0 +1,24 @@
+class RegistroAnimales:
+
+    def __init__(self):
+        self.animales = []
+        self.unicos = set()
+
+    def agregar_animal(self, animal):
+        self.animales.append(animal)
+        self.unicos.add(animal)
+
+    def agregar_muchos(self, *args):
+        for animal in args:
+            self.agregar_animal(animal)
+
+    def cantidad_unicas(self):
+        return len(self.unicos)
+
+
+r = RegistroAnimales()
+
+r.agregar_muchos("perro", "gato", "perro", "conejo", "gato")
+
+print(r.animales)
+print(r.cantidad_unicas())

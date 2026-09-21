@@ -1,0 +1,34 @@
+class Actividades:
+
+    def __init__(self):
+        self.tareas = []
+
+    def agregar(self, tarea, prioridad):
+        self.tareas.append((tarea, prioridad))
+
+    def tareas_altas(self):
+        resultado = []
+
+        for tarea in self.tareas:
+            if tarea[1] == "alta":
+                resultado.append(tarea)
+
+        return resultado
+
+    def eliminar(self, nombre):
+        for tarea in self.tareas:
+            if tarea[0] == nombre:
+                self.tareas.remove(tarea)
+
+
+a = Actividades()
+
+a.agregar("Tarea de Python", "alta")
+a.agregar("Leer", "baja")
+a.agregar("Estudiar POO", "alta")
+
+print(a.tareas_altas())
+
+a.eliminar("Leer")
+
+print(a.tareas)

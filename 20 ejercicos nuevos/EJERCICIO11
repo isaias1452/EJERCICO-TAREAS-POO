@@ -1,0 +1,39 @@
+class ContadorFrutas:
+
+    def __init__(self):
+        self.frutas = {}
+
+    def agregar(self, fruta):
+        if fruta in self.frutas:
+            self.frutas[fruta] = self.frutas[fruta] + 1
+        else:
+            self.frutas[fruta] = 1
+
+    def mas_frecuente(self):
+        mayor = 0
+        fruta_mayor = ""
+
+        for fruta, cantidad in self.frutas.items():
+            if cantidad > mayor:
+                mayor = cantidad
+                fruta_mayor = fruta
+
+        return fruta_mayor
+
+    def frecuencia(self, fruta):
+        if fruta in self.frutas:
+            return self.frutas[fruta]
+        else:
+            return 0
+
+
+f = ContadorFrutas()
+
+f.agregar("Manzana")
+f.agregar("Banano")
+f.agregar("Manzana")
+f.agregar("Manzana")
+
+print(f.frutas)
+print(f.mas_frecuente())
+print(f.frecuencia("Manzana"))

@@ -1,0 +1,37 @@
+class RegistroEstudiantes:
+
+    def __init__(self):
+        self.notas = {}
+
+    def registrar(self, estudiante, nota):
+        self.notas[estudiante] = nota
+
+    def aprobados(self):
+        lista = []
+
+        for estudiante, nota in self.notas.items():
+            if nota >= 70:
+                lista.append(estudiante)
+
+        return lista
+
+    def mejor_estudiante(self):
+        nombre = ""
+        mejor_nota = 0
+
+        for estudiante, nota in self.notas.items():
+            if nota > mejor_nota:
+                mejor_nota = nota
+                nombre = estudiante
+
+        return (nombre, mejor_nota)
+
+
+r = RegistroEstudiantes()
+
+r.registrar("Juan", 80)
+r.registrar("Ana", 95)
+r.registrar("Pedro", 60)
+
+print(r.aprobados())
+print(r.mejor_estudiante())

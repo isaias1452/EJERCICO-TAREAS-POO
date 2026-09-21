@@ -1,0 +1,51 @@
+class ClasificadorEdades:
+
+    def __init__(self):
+        self.grupos = {
+            "niño": [],
+            "adolescente": [],
+            "adulto": [],
+            "mayor": []
+        }
+
+    def clasificar(self, edad):
+
+        if edad <= 12:
+            return "niño"
+
+        elif edad <= 17:
+            return "adolescente"
+
+        elif edad <= 59:
+            return "adulto"
+
+        else:
+            return "mayor"
+
+    def agrupar(self, *edades):
+
+        for edad in edades:
+            categoria = self.clasificar(edad)
+            self.grupos[categoria].append(edad)
+
+        return self.grupos
+
+    def promedio_categoria(self, categoria):
+
+        lista = self.grupos[categoria]
+
+        if len(lista) == 0:
+            return 0
+
+        suma = 0
+
+        for edad in lista:
+            suma = suma + edad
+
+        return suma / len(lista)
+
+
+c = ClasificadorEdades()
+
+print(c.agrupar(8, 15, 25, 70, 10, 30))
+print(c.promedio_categoria("adulto"))

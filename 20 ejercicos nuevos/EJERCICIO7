@@ -1,0 +1,35 @@
+class Temperaturas:
+
+    def __init__(self):
+        self.lista = []
+
+    def agregar(self, temperatura):
+        self.lista.append(temperatura)
+
+    def agregar_varias(self, *temperaturas):
+        for temperatura in temperaturas:
+            self.agregar(temperatura)
+
+    def minima(self):
+        return min(self.lista)
+
+    def maxima(self):
+        return max(self.lista)
+
+    def promedio(self):
+        suma = 0
+
+        for temperatura in self.lista:
+            suma = suma + temperatura
+
+        return suma / len(self.lista)
+
+
+t = Temperaturas()
+
+t.agregar_varias(28, 30, 25, 27, 32)
+
+print(t.lista)
+print(t.minima())
+print(t.maxima())
+print(t.promedio())

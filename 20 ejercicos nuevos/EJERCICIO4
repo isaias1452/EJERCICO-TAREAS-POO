@@ -1,0 +1,27 @@
+class InvertirNombres:
+
+    def invertir(self, lista):
+        nueva_lista = []
+
+        for i in range(len(lista) - 1, -1, -1):
+            nueva_lista.append(lista[i])
+
+        return nueva_lista
+
+    def invertir_varias(self, *listas):
+        resultado = {}
+
+        for lista in listas:
+            resultado[str(lista)] = self.invertir(lista)
+
+        return resultado
+
+
+i = InvertirNombres()
+
+print(i.invertir(["Ana", "Luis", "Pedro", "Maria"]))
+
+print(i.invertir_varias(
+    [1, 2, 3],
+    [4, 5, 6]
+))

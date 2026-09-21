@@ -1,0 +1,34 @@
+class ValidadorEdad:
+
+    def __init__(self):
+        self.edades = []
+
+    def validar_edad(self, edad):
+        if edad >= 1 and edad <= 100:
+            return True
+        else:
+            return False
+
+    def cargar_edades(self, *args):
+        for edad in args:
+            if self.validar_edad(edad):
+                self.edades.append(edad)
+
+        return self.edades
+
+    def promedio(self):
+        if len(self.edades) == 0:
+            return 0
+
+        suma = 0
+
+        for edad in self.edades:
+            suma = suma + edad
+
+        return suma / len(self.edades)
+
+
+v = ValidadorEdad()
+
+print(v.cargar_edades(18, 20, 150, 25, -5, 30))
+print(v.promedio())

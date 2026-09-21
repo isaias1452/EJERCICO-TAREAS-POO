@@ -1,0 +1,37 @@
+class Divisores:
+
+    def encontrar(self, numero):
+        divisores = []
+
+        for i in range(1, numero + 1):
+            if numero % i == 0:
+                divisores.append(i)
+
+        return tuple(divisores)
+
+    def es_perfecto(self, numero):
+        suma = 0
+
+        for i in range(1, numero):
+            if numero % i == 0:
+                suma = suma + i
+
+        if suma == numero:
+            return True
+        else:
+            return False
+
+    def varios(self, *numeros):
+        resultado = {}
+
+        for numero in numeros:
+            resultado[numero] = self.encontrar(numero)
+
+        return resultado
+
+
+d = Divisores()
+
+print(d.encontrar(12))
+print(d.es_perfecto(6))
+print(d.varios(6, 10, 12))

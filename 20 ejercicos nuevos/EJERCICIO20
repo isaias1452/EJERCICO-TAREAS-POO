@@ -1,0 +1,50 @@
+class Papeleria:
+
+    def __init__(self):
+        self.productos = {}
+
+    def agregar(self, producto, cantidad):
+
+        if producto in self.productos:
+            self.productos[producto] = (
+                self.productos[producto] + cantidad
+            )
+        else:
+            self.productos[producto] = cantidad
+
+    def retirar(self, producto, cantidad):
+
+        if producto in self.productos:
+
+            if self.productos[producto] >= cantidad:
+                self.productos[producto] = (
+                    self.productos[producto] - cantidad
+                )
+
+                return True
+
+        return False
+
+    def bajo_stock(self, minimo):
+
+        resultado = []
+
+        for producto, cantidad in self.productos.items():
+
+            if cantidad < minimo:
+                resultado.append(producto)
+
+        return resultado
+
+
+p = Papeleria()
+
+p.agregar("Cuadernos", 20)
+p.agregar("Lapices", 8)
+p.agregar("Borradores", 5)
+
+print(p.retirar("Cuadernos", 5))
+
+print(p.productos)
+
+print(p.bajo_stock(10))

@@ -1,0 +1,24 @@
+class Combinador:
+
+    def intercalar(self, lista1, lista2):
+        resultado = []
+
+        mayor = max(len(lista1), len(lista2))
+
+        for i in range(mayor):
+
+            if i < len(lista1):
+                resultado.append(lista1[i])
+
+            if i < len(lista2):
+                resultado.append(lista2[i])
+
+        return resultado
+
+
+c = Combinador()
+
+nombres = ["Juan", "Ana", "Pedro"]
+carreras = ["Software", "Sistemas", "Industrial"]
+
+print(c.intercalar(nombres, carreras))

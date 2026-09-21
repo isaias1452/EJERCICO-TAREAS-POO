@@ -1,0 +1,35 @@
+class ClasificadorNumeros:
+
+    def __init__(self):
+        self.positivos = []
+        self.negativos = []
+
+    def es_positivo(self, numero):
+        if numero >= 0:
+            return True
+        else:
+            return False
+
+    def separar(self, *numeros):
+        for numero in numeros:
+            if self.es_positivo(numero):
+                self.positivos.append(numero)
+            else:
+                self.negativos.append(numero)
+
+        return {
+            "positivos": self.positivos,
+            "negativos": self.negativos
+        }
+
+    def cantidades(self):
+        return (
+            len(self.positivos),
+            len(self.negativos)
+        )
+
+
+c = ClasificadorNumeros()
+
+print(c.separar(10, -5, 20, -8, 30))
+print(c.cantidades())

@@ -1,0 +1,34 @@
+class GruposEstudiantes:
+
+    def __init__(self):
+        self.grupos = {}
+
+    def crear_grupo(self, nombre):
+        self.grupos[nombre] = []
+
+    def agregar_estudiante(self, grupo, estudiante):
+        self.grupos[grupo].append(estudiante)
+
+    def grupo_mayor(self):
+        mayor = ""
+        cantidad = 0
+
+        for grupo, estudiantes in self.grupos.items():
+            if len(estudiantes) > cantidad:
+                cantidad = len(estudiantes)
+                mayor = grupo
+
+        return mayor
+
+
+g = GruposEstudiantes()
+
+g.crear_grupo("Grupo A")
+g.crear_grupo("Grupo B")
+
+g.agregar_estudiante("Grupo A", "Juan")
+g.agregar_estudiante("Grupo A", "Pedro")
+g.agregar_estudiante("Grupo B", "Ana")
+
+print(g.grupos)
+print(g.grupo_mayor())
