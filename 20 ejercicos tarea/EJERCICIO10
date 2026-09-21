@@ -1,0 +1,41 @@
+class Tareas:
+
+    def __init__(self):
+        self.lista_tareas = []
+
+    def agregar_tarea(self, descripcion, prioridad):
+        tarea = (descripcion, prioridad)
+        self.lista_tareas.append(tarea)
+
+    def tareas_prioritarias(self):
+        resultado = []
+
+        for tarea in self.lista_tareas:
+            if tarea[1] == "alta":
+                resultado.append(tarea)
+
+        return resultado
+
+    def eliminar_completada(self, descripcion):
+        for tarea in self.lista_tareas:
+            if tarea[0] == descripcion:
+                self.lista_tareas.remove(tarea)
+                return True
+
+        return False
+
+
+# Programa principal
+
+t = Tareas()
+
+t.agregar_tarea("Estudiar", "alta")
+t.agregar_tarea("Leer", "baja")
+t.agregar_tarea("Hacer tarea", "alta")
+
+print("Tareas:", t.lista_tareas)
+print("Prioritarias:", t.tareas_prioritarias())
+
+t.eliminar_completada("Leer")
+
+print("Después de eliminar:", t.lista_tareas)

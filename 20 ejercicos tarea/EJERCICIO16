@@ -1,0 +1,47 @@
+class CodificadorCesar:
+
+    def __init__(self):
+        self.historial = {}
+
+    def codificar_letra(self, letra, desplazamiento):
+
+        if letra.isupper():
+            inicio = ord('A')
+            nueva_letra = chr(
+                (ord(letra) - inicio + desplazamiento) % 26 + inicio
+            )
+        else:
+            inicio = ord('a')
+            nueva_letra = chr(
+                (ord(letra) - inicio + desplazamiento) % 26 + inicio
+            )
+
+        return nueva_letra
+
+    def codificar_palabra(self, palabra, desplazamiento):
+
+        resultado = ""
+
+        for letra in palabra:
+            if letra.isalpha():
+                resultado += self.codificar_letra(
+                    letra,
+                    desplazamiento
+                )
+            else:
+                resultado += letra
+
+        self.historial[palabra] = resultado
+
+        return resultado
+
+
+# Programa principal
+
+cc = CodificadorCesar()
+
+resultado = cc.codificar_palabra("hola", 3)
+
+print("Original:", "hola")
+print("Codificada:", resultado)
+print("Historial:", cc.historial)

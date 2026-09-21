@@ -1,0 +1,62 @@
+class AnalizadorPatrones:
+
+    def __init__(self):
+        self.texto = ""
+
+    def encontrar_palabras(self, texto, patron):
+
+        palabras = texto.split()
+        resultado = []
+
+        for palabra in palabras:
+            if palabra.startswith(patron):
+                resultado.append(palabra)
+
+        return resultado
+
+    def agrupar_por_longitud(self, texto):
+
+        resultado = {}
+
+        palabras = texto.split()
+
+        for palabra in palabras:
+
+            longitud = len(palabra)
+
+            if longitud not in resultado:
+                resultado[longitud] = []
+
+            resultado[longitud].append(palabra)
+
+        return resultado
+
+    def palabras_unicas(self):
+
+        palabras = self.texto.split()
+
+        return set(palabras)
+
+
+# Programa principal
+
+ap = AnalizadorPatrones()
+
+texto = "el gato está aquí el gato"
+
+ap.texto = texto
+
+print(
+    "Palabras que empiezan con 'g':",
+    ap.encontrar_palabras(texto, "g")
+)
+
+print(
+    "Agrupadas por longitud:",
+    ap.agrupar_por_longitud(texto)
+)
+
+print(
+    "Palabras únicas:",
+    ap.palabras_unicas()
+)

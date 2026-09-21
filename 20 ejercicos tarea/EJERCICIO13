@@ -1,0 +1,46 @@
+class CombinadorListas:
+
+    def intercalar(self, lista1, lista2):
+
+        resultado = []
+
+        minimo = min(len(lista1), len(lista2))
+
+        for i in range(minimo):
+            resultado.append(lista1[i])
+            resultado.append(lista2[i])
+
+        for i in range(minimo, len(lista1)):
+            resultado.append(lista1[i])
+
+        for i in range(minimo, len(lista2)):
+            resultado.append(lista2[i])
+
+        return resultado
+
+    def intercalar_multiples(self, *listas):
+
+        if len(listas) == 0:
+            return []
+
+        resultado = list(listas[0])
+
+        for i in range(1, len(listas)):
+            resultado = self.intercalar(resultado, listas[i])
+
+        return resultado
+
+
+# Programa principal
+
+cl = CombinadorListas()
+
+print(cl.intercalar([1, 2], [3, 4]))
+
+print(
+    cl.intercalar_multiples(
+        [1, 2],
+        [3, 4],
+        [5, 6]
+    )
+)

@@ -1,0 +1,38 @@
+class AnalizadorNumeros:
+
+    def __init__(self):
+        self.resultado = {
+            "pares": [],
+            "impares": []
+        }
+
+    def es_par(self, numero):
+        return numero % 2 == 0
+
+    def separar(self, *numeros):
+        self.resultado = {
+            "pares": [],
+            "impares": []
+        }
+
+        for numero in numeros:
+            if self.es_par(numero):
+                self.resultado["pares"].append(numero)
+            else:
+                self.resultado["impares"].append(numero)
+
+        return self.resultado
+
+    def cantidad_pares_impares(self):
+        return (
+            len(self.resultado["pares"]),
+            len(self.resultado["impares"])
+        )
+
+
+# Programa principal
+
+an = AnalizadorNumeros()
+
+print(an.separar(1, 2, 3, 4, 5))
+print(an.cantidad_pares_impares())

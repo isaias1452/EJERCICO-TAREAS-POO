@@ -1,0 +1,31 @@
+class SelectorRango:
+
+    def crear_rango(self, inicio, fin):
+        return tuple(range(inicio, fin + 1))
+
+    def elementos_en_multiples_rangos(self, *rangos):
+
+        elementos = set()
+
+        for rango in rangos:
+            inicio = rango[0]
+            fin = rango[1]
+
+            for numero in range(inicio, fin + 1):
+                elementos.add(numero)
+
+        return sorted(elementos)
+
+
+# Programa principal
+
+sr = SelectorRango()
+
+print(sr.crear_rango(1, 3))
+
+print(
+    sr.elementos_en_multiples_rangos(
+        (1, 3),
+        (2, 4)
+    )
+)
